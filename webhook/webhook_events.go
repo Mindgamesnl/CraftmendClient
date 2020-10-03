@@ -1,5 +1,7 @@
 package webhook
 
-func initializeHandlers(handler *eventHandler)  {
+import "github.com/Mindgamesnl/CraftmendClient/notifications"
 
+func initializeHandlers(handler *eventHandler)  {
+	handler.On("notify", notifications.FromWebhook)
 }
