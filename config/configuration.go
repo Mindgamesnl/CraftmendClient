@@ -13,7 +13,8 @@ type Config struct {
 
 var LoadedConfig Config
 
-var defaultConfig = `{
+var defaultConfig = `
+{
 	"webhook-api-key": "craftmend webhook api key"
 }
 `
