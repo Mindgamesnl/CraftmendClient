@@ -9,13 +9,15 @@ import (
 
 type Config struct {
 	WebhookApiKey string `json:"webhook-api-key"`
+	HueUser string `json:"hue-user"`
 }
 
 var LoadedConfig Config
 
 var defaultConfig = `
 {
-	"webhook-api-key": "craftmend webhook api key"
+	"webhook-api-key": "craftmend webhook api key",
+	"hue-user": "hue user key"
 }
 `
 
