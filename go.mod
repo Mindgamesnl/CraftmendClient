@@ -4,6 +4,7 @@ go 1.14
 
 require (
 	github.com/Mindgamesnl/CraftmendWebhookClient v0.0.0-20201003161242-b2f2fec3990c
+	github.com/Mindgamesnl/gjobs v0.0.0-20201009082746-937bfdc9d5f8
 	github.com/amimof/huego v1.1.0
 	github.com/deckarep/gosx-notifier v0.0.0-20180201035817-e127226297fb // indirect
 	github.com/lucasb-eyer/go-colorful v1.0.3

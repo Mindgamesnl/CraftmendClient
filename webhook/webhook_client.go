@@ -3,8 +3,11 @@ package webhook
 import (
 	"github.com/Mindgamesnl/CraftmendClient/config"
 	"github.com/Mindgamesnl/CraftmendWebhookClient"
+	"github.com/Mindgamesnl/gjobs/jobs"
 	"github.com/sirupsen/logrus"
 )
+
+var manager = jobs.NewJobManager(1)
 
 type eventHandler struct {
 	handlers map[string][]func(data string)
@@ -23,6 +26,7 @@ func (eh *eventHandler) On(event string, handler func(data string)) {
 func (eh eventHandler) do(event string, data string) {
 	collection, found := eh.handlers[event]
 	if found {
+		logrus.Info("Running ", event)
 		for i := range collection {
 			collection[i](data)
 		}
@@ -41,6 +45,9 @@ func InitializeWebhook() {
 	initializeHandlers(&eh)
 
 	client.On(func(event string, data string) {
-		eh.do(event, data)
+		logrus.Info("Scheduling " + event)
+		manager.ScheduleFunction(func() {
+			eh.do(event, data)
+		})
 	})
 }
